@@ -45,8 +45,8 @@ char *strcat_cd(data_shell *datash, char *msg, char *error, char *ver_str)
  */
 char *error_get_cd(data_shell *datash)
 {
-	int len, len_id;
-	char *err, *ver_str, *msg;
+	int length, len_id;
+	char *error, *ver_str, *msg;
 
 	ver_str = aux_itoa(datash->counter);
 	if (datash->args[1][0] == '-')
@@ -60,21 +60,21 @@ char *error_get_cd(data_shell *datash)
 		len_id = _strlen(datash->args[1]);
 	}
 
-	len = _strlen(datash->av[0]) + _strlen(datash->args[0]);
-	len += _strlen(ver_str) + _strlen(msg) + len_id + 5;
-	err = malloc(sizeof(char) * (len + 1));
+	length = _strlen(datash->av[0]) + _strlen(datash->args[0]);
+	length += _strlen(ver_str) + _strlen(msg) + len_id + 5;
+	error = malloc(sizeof(char) * (length + 1));
 
-	if (err == 0)
+	if (error == 0)
 	{
 		free(ver_str);
 		return (NULL);
 	}
 
-	err = strcat_cd(datash, msg, err, ver_str);
+	error = strcat_cd(datash, msg, error, ver_str);
 
 	free(ver_str);
 
-	return (err);
+	return (error);
 }
 
 /**
@@ -84,13 +84,13 @@ char *error_get_cd(data_shell *datash)
  */
 char *error_not_found(data_shell *datash)
 {
-	int lenght;
+	int length;
 	char *error;
 	char *ver_str;
 
 	ver_str = aux_itoa(datash->counter);
-	lenght = _strlen(datash->av[0]) + _strlen(ver_str);
-	lenght += _strlen(datash->args[0]) + 16;
+	length = _strlen(datash->av[0]) + _strlen(ver_str);
+	length += _strlen(datash->args[0]) + 16;
 	error = malloc(sizeof(char) * (length + 1));
 	if (error == 0)
 	{
